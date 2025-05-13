@@ -1,5 +1,5 @@
 # CEMC-CCC-Solutions
-This repository contains solutions to the CEMC CCC contests written in Python
+This repository contains solutions and explanations to the CEMC CCC contests written in Python
 
 ## Overview
 - Starting with the 2025 **Junior** contest, I will be completeing each years contest, then moving on to **Senior**.
