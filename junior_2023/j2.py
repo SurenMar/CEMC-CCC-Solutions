@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2023/2023CCCJrProblemSet.html
+
 # Peppers dictionary using first letters to distinguish between peppers since
 #   all first letters are distinct
 peppers = {

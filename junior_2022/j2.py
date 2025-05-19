@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
+
 count = 0
 n = int(input())
 for i in range(n):

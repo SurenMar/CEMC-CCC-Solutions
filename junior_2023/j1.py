@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2023/2023CCCJrProblemSet.html
+
 p = int(input())
 c = int(input())
 

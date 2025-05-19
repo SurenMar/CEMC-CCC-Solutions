@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2023/2023CCCJrProblemSet.html
+
 cols = int(input())
 row1 = list(map(int, input().split()))
 row2 = list(map(int, input().split()))

@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2025/2025CCCJrProblemSet.html
+
 d = int(input())
 e = int(input())
 

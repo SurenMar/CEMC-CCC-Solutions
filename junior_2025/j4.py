@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2025/2025CCCJrProblemSet.html
+
 s_counter = [0, 0]      # counter for each s: one's before a P and ones after
 current_s = 0           # index of s_counter were currently updating
 p_counter = 0           # number of P's currently seen

@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2024/2024CCCJrProblemSet.html
+
 scores = []
 # Create list of all scores
 for i in range(int(input())):

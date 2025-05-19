@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2023/2023CCCJrProblemSet.html
+
 attendance = [0, 0, 0, 0, 0]        # List counter that keeps track of each day
 for i in range(int(input())):
     days = input()                  # Users availability

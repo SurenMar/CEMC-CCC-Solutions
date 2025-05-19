@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCJrProblemSet.html
+
 instructions = input()
 
 for i in range(len(instructions)):

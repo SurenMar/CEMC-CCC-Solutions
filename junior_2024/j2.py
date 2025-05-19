@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2024/2024CCCJrProblemSet.html
+
 d = int(input())    # Dusa's size
 y = int(input())    # First yobis size
 

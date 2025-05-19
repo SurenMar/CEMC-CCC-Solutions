@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2024/2024CCCJrProblemSet.html
+
 rows = int(input())
 cols = int(input())
 

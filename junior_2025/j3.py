@@ -1,3 +1,5 @@
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2025/2025CCCJrProblemSet.html
+
 n = int(input())
 
 # list to store the new codes
