@@ -45,7 +45,7 @@ for i in range(int(input())):
             if diff_group1[index] in group:         # check if students pair IS in group
                 violations += 1
 
-violations //= 2     # half violations to account for double counting since if
+violations //= 2    # half violations to account for double counting since if
                     #   one student commits a violations, their partners
                     #   violation will also be counted (as per the code), 
                     #   making it 2 total violations instead 1
