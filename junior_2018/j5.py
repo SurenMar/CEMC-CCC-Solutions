@@ -1,4 +1,4 @@
-# https://cemc.uwaterloo.ca/contests/computing/2018/stage1/juniorEn.pdf
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2018/2018CCCJrProblemSet.html
 
 # We use deque for queue and not regular list because in list, popping an
 #   element will be O(n) each pop
