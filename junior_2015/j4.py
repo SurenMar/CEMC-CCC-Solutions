@@ -11,7 +11,7 @@ def increase_wait(w=1):
         if flags[friend]:
             wait_times[friend] += w
 
-num_lines = int(input(""))
+num_lines = int(input())
 # Loops through all lines
 while num_lines > 0:
     user_input = input()
