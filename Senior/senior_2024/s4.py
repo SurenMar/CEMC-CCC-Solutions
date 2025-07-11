@@ -1,46 +1,40 @@
 # https://cemc.uwaterloo.ca/sites/default/files/documents/2024/2024CCCSrProblems.html
 
-num_nodes, num_roads = map(int, input().split())
+num_nodes, num_edges = map(int, input().split())
 
-# Create double ended graph of roads and hashmap for the paint on each road
-roads = {}
-road_graph = [[] for _ in range(num_nodes)]
-for _ in range(num_roads):
-    node1, node2 = map(int, input().split())
-    min_node = min(node1-1, node2-1)
-    max_node = max(node1-1, node2-1)
-    roads[(min_node, max_node)] = 'G'
-    road_graph[min_node].append(max_node)
-    road_graph[max_node].append(min_node)
+# Adjacency list to store the undirected graph
+adjacency_list = [[] for _ in range(num_nodes)]
+# Map each edge (u, v) and (v, u) to its input index (0 to M-1)
+edge_to_index = {}
+# Initially paint all edges grey
+painted_edges = ["G"] * num_edges
 
-print(road_graph)
+# Read and store all edges for undirected graph
+for i in range(num_edges):
+    u, v = [x-1 for x in map(int, input().split())]
+    adjacency_list[u].append(v)
+    adjacency_list[v].append(u)
+    edge_to_index[(u, v)] = i
+    edge_to_index[(v, u)] = i
+    
+# A Function to build a graph and paint its edges alternately red and blue
+visited = [False] * num_nodes
+def paint_graph_edges(node, paint_red):
+    visited[node] = True
+    # Loop through all neighbours
+    for neighbor in adjacency_list[node]:
+        if not visited[neighbor]:
+            # Get the index of the edge between current node and neighbor
+            edge_index = edge_to_index[(node, neighbor)]
+            painted_edges[edge_index] = "R" if paint_red else "B"
+            # Recursively paint the next level with alternating color
+            paint_graph_edges(neighbor, not paint_red)
 
-# A function to see if a triangular cyclic exists through node and next_node
-def is_triangle(node, next_node):
-    for next_next_node in road_graph[next_node]:
-        if set(node, next_node, next_next_node) not in triangles_visited and \
-           node in road_graph[next_next_node]:
-            triangles_visited.append(set(node, next_node, next_next_node))
-            return next_next_node
-    return None
-
-def colour_triangle(node, next_node, next_next_node):
-    pass
-
-# Loop through each node and paint the road it creates either B, R, or keep it G
-triangles_visited = []
+# Traverse all components of the graph
 for node in range(num_nodes):
-    for i, next_node in enumerate(road_graph[node]):
-        next_next_node = is_triangle(node, next_node)
-        if next_next_node:
-            pass
+    if not visited[node]:
+        # Start painting from this node with red
+        paint_graph_edges(node, paint_red=True)
 
 # Output
-paint = ''.join(roads.values())
-print(paint)
-
-# ALL PATHS MUST HAVE AT LEATS ONE COLOURED ROAD BRANCHING OFF
-
-# Given 2 nodes, if another node is added to it, colour the paths based on
-#   the path of the first 2 nodes.
-            
+print("".join(painted_edges))
