@@ -18,19 +18,31 @@ for _ in range(num_paths):
     node1, node2, length, cost = map(int, input().split())
     graph[node1].append((node2, length, cost))
 
+# Finds the shortest path that can be taken.
+def shortest_path(possible_paths):
+    min_idx = 0
+    for i in range(1, len(possible_paths)):
+        if possible_paths[i][1] < possible_paths[min_idx][1]:
+            min_idx = i
+    return min_idx
+        
 # Recursive function to find most optimal path in graph
-def find_path(node, num_visited, possible_paths, total_cost):
+def find_path(node, num_visited, possible_paths, total_cost, prefix_length):
     """
     num_visted: number of all visited paths
-    possible_paths: set of all current paths that can be taken
-        shape: [path_length, cost]
+    possible_paths: unique list of all current paths that can be taken
+        element fromat: (destination_node, path_length, cost)
     total_cost: total cost of maintaining the chosen paths
+    prefix_length: hashmap of prefix sums of path lengths
     """
-    if len(num_visited) == num_nodes:
+    # Base case
+    if num_visited == num_nodes:
         return total_cost
     else:
         # Update possible paths
         for neighbours in graph[node]:
-            idx = bisect_left([x[0] for x in possible_paths], 
-                (graph[neighbours][2], graph[neighbours][3]))
-            possible_paths.insert(idx, )
+            possible_paths.append(neighbours)
+        # Remove duplicates and find shortest path
+        possible_paths = list(set(possible_paths))
+        min_idx = shortest_path(possible_paths)
+          
