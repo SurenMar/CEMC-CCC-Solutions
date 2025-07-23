@@ -25,9 +25,10 @@ def shortest_distance(start, end, limit):
     distances = [float('inf')] * num_nodes
     distances[start] = 0
 
-    # Simple queue (inefficient but acceptable for small graphs)
+    # Simple queue
     queue = [start]
 
+    # Performs dijkstra's algorithm
     while queue:
         # Find the node in the queue with the smallest distance
         min_idx = 0
