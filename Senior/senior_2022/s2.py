@@ -1,53 +1,47 @@
 # https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCSrProblems.html
 
-# Read students who must be in same group
-same_group1 = []
-same_group2 = []
-for i in range(int(input())):
-    pair = input().split()
-    same_group1.append(pair[0])
-    same_group2.append(pair[1])
+N, M, K = map(int, input().split())
 
-# Read students who must be in different groups
-diff_group1 = []
-diff_group2 = []
-for i in range(int(input())):
-    pair = input().split()
-    diff_group1.append(pair[0])
-    diff_group2.append(pair[1])
+# Initialize variables
+max_notes = []
+min_notes = []
+solutions = 0
 
-# Read groups and count violations
-violations = 0
-for i in range(int(input())):
-    group = input().split()
+# Function to check if a sequence is good
+def is_good(seq):
+    # Check if all adjacent differences are at most 1
+    for i in range(len(seq) - 1):
+        if abs(seq[i] - seq[i + 1]) > 1:
+            return False
+    # Check if max and min notes match input
+    if max(seq) != max_notes[0] or min(seq) != min_notes[0]:
+        return False
+    return True
+
+# Generate all possible sequences
+def generate_sequences(curr_seq, notes_left, prev_note):
+    global solutions
+    if notes_left == 0:
+        if len(curr_seq) == N and is_good(curr_seq):
+            solutions += 1
+        return
     
-    # Loop through group and see if any violations are made
-    for j in [0, 1, 2]:
-        # Check if current student in group must be grouped with a certain student
-        if group[j] in same_group1:
-            index = same_group1.index(group[j])     # Get index
-            if same_group2[index] not in group:     # Check if students pair IS NOT in group
-                violations += 1
-        # Same as above if statement
-        elif group[j] in same_group2:
-            index = same_group2.index(group[j])     # Get index
-            if same_group1[index] not in group:     # Check if students pair IS NOT in group
-                violations += 1
-        
-        # Check if current student in group must not be grouped with a certain student
-        if group[j] in diff_group1:
-            index = diff_group1.index(group[j])     # Get index
-            if diff_group2[index] in group:         # Check if students pair IS in group
-                violations += 1
-        # Same as above if statement
-        elif group[j] in diff_group2:
-            index = diff_group2.index(group[j])     # Get index
-            if diff_group1[index] in group:         # Check if students pair IS in group
-                violations += 1
+    # Try notes from min to max
+    for note in range(min_notes[0], max_notes[0] + 1):
+        # Check if note can be used (adjacent difference <= 1)
+        if prev_note is None or abs(note - prev_note) <= 1:
+            curr_seq.append(note)
+            generate_sequences(curr_seq, notes_left - 1, note)
+            curr_seq.pop()
 
-violations //= 2    # Half violations to account for double counting since if
-                    #   one student commits a violations, their partners
-                    #   violation will also be counted (as per the code), 
-                    #   making it 2 total violations instead 1
-# Output
-print(violations)
+# Read max and min notes
+for i in range(M):
+    max_notes.append(int(input()))
+for i in range(M):
+    min_notes.append(int(input()))
+
+# Generate sequences and count good ones
+generate_sequences([], N, None)
+
+# Output result modulo 10^9 + 7
+print(solutions % (10**9 + 7))
