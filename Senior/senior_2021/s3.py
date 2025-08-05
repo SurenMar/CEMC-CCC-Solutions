@@ -1,4 +1,4 @@
-# https://cemc.uwaterloo.ca/sites/default/files/documents/2022/2022CCCSrProblems.html
+# https://cemc.uwaterloo.ca/sites/default/files/documents/2021/2021CCCSrProblems.html
 
 num_friends = int(input())
 friends = [tuple(map(int, input().split())) for _ in range(num_friends)]
