@@ -12,11 +12,6 @@ for _ in range(num_walkways):
 stations = list(map(int, input().split()))
 swaps = [tuple(map(int, input().split())) for _ in range(num_swaps)]
 
-# Swaps two elements in a list
-def swap(i1, i2, lst):
-    lst[i1], lst[i2] = lst[i2], lst[i1]
-    return lst
-
 # Find shortest path time for each day
 min_times = []
 for day in swaps:
